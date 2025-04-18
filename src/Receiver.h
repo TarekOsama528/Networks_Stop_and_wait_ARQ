@@ -18,6 +18,8 @@
 
 #include <omnetpp.h>
 
+#include "MyMessage_m.h"
+
 using namespace omnetpp;
 
 /**
