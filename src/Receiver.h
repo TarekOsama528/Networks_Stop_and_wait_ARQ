@@ -29,7 +29,11 @@ class Receiver : public cSimpleModule
 {
   protected:
     virtual void initialize() override;
+    std::string unstuffPayload(const std::string& stuffed);
+    bool hasSingleBitError(const std::string& stuffedPayload, const std::string& parityByteStr);
+    void logAction(const std::string& direction, const std::string& msgType, const std::string& content, int seqId, int modified);
     virtual void handleMessage(cMessage *msg) override;
+    std::string binaryToAscii(const std::string& bitString);
 };
 
 #endif

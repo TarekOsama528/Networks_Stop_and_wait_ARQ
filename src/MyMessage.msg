@@ -1,4 +1,3 @@
-
 packet MyMessage {
     string M_Header;
     string M_Payload;
