@@ -16,12 +16,19 @@
 #include "Receiver.h"
 #include "MyMessage_m.h"
 #include <bitset>
+#include <cstdio>
+#include <string>
+#include <fstream>
 int id=0;
 Define_Module(Receiver);
 
 void Receiver::initialize()
 {
-    // TODO - Generated method body
+    if (std::remove("receiver_log.txt") == 0) {
+            EV << "receiver_log.txt deleted successfully at simulation start.\n";
+        } else {
+            EV << "receiver_log.txt does not exist or couldn't be deleted.\n";
+        }
 }
 
 void Receiver::handleMessage(cMessage *msg1)
@@ -92,19 +99,23 @@ bool Receiver::hasSingleBitError(const std::string& stuffedPayload, const std::s
 
 void Receiver::logAction(const std::string& direction, const std::string& msgType,
                          const std::string& content, int seqId, int modified) {
+    // Log to OMNeT++ event log
     EV << "At time=" << simTime()
        << " Receiver " << direction
        << " " << msgType
        << " [" << content << "], ID=" << seqId
        << ", modified=" << modified << "\n";
-}
 
-std::string Receiver::binaryToAscii(const std::string& bitString) {
-    std::string result;
-    for (size_t i = 0; i + 7 < bitString.length(); i += 8) {
-        std::string byteStr = bitString.substr(i, 8);
-        char c = static_cast<char>(std::bitset<8>(byteStr).to_ulong());
-        result += c;
+    // Append to external text file
+    std::ofstream outFile("receiver_log.txt", std::ios::app); // append mode
+    if (outFile.is_open()) {
+        outFile << "At time=" << simTime()
+                << " Receiver " << direction
+                << " " << msgType
+                << " [" << content << "], ID=" << seqId
+                << ", modified=" << modified << "\n";
+        outFile.close();
+    } else {
+        EV << "Failed to open receiver_log.txt for writing.\n";
     }
-    return result;
 }
