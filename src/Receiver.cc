@@ -52,9 +52,9 @@ void Receiver::handleMessage(cMessage *msg1)
         std::string unstuffedPayload = unstuffPayload(stuffedPayload);
         result = binaryToAscii(unstuffedPayload);
         logAction("Received","message",result,id,0);
-        MyMessage *nack = new MyMessage();
-        nack->setM_Type(1);
-        nack->setId(id);
+        MyMessage *ack = new MyMessage();
+        ack->setM_Type(1);
+        ack->setId(id);
         logAction("Sent","ACK","",id++,0);
         }
 
