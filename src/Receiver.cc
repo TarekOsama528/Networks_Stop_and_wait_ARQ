@@ -119,3 +119,26 @@ void Receiver::logAction(const std::string& direction, const std::string& msgTyp
         EV << "Failed to open receiver_log.txt for writing.\n";
     }
 }
+
+std::string Receiver::binaryToAscii(const std::string& bitString) {
+    std::string asciiStr = "";
+
+    // Process the bit string in chunks of 8 bits
+    for (size_t i = 0; i < bitString.length(); i += 8) {
+        // Extract the next 8 bits (1 byte)
+        std::string byteStr = bitString.substr(i, 8);
+
+        // Convert the 8-bit string to a char
+        char byte = 0;
+        for (size_t j = 0; j < 8; ++j) {
+            if (byteStr[j] == '1') {
+                byte |= (1 << (7 - j)); // Set the corresponding bit in the byte
+            }
+        }
+
+        // Add the character to the resulting ASCII string
+        asciiStr += byte;
+    }
+
+    return asciiStr;
+}
