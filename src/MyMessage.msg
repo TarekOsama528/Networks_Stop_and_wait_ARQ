@@ -5,4 +5,8 @@ packet MyMessage {
     int M_Type;
     float sending_time;
     int id;
+	bool modification;    
+    bool duplication;       
+    bool delay;             
+    bool loss;              
 }

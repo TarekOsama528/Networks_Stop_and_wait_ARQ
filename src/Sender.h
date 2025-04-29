@@ -18,6 +18,9 @@
 
 #include <omnetpp.h>
 #include "MyMessage_m.h"
+#include <fstream>
+#include <vector>
+#include <bitset>
 using namespace omnetpp;
 
 /**
@@ -25,9 +28,34 @@ using namespace omnetpp;
  */
 class Sender : public cSimpleModule
 {
+  private:
+    std::vector<MyMessage *> messageVector;
+    double st, to, td, tt, pt;
+    cMessage *startEvent;
+    cMessage *timeoutEvent;
+    simtime_t sessionStartTime;
+    simtime_t sessionFinishTime;
+    int currentSeq = 0;
+    int CurrentMessageIndex=0;
+    MyMessage *currentMessage = nullptr;
+    int totalpacketssent=0;
+    bool waitforAck =false;
+    int correctMessages=0;
+    std::string unmodifiedpayload;
+
   protected:
+
     virtual void initialize() override;
     virtual void handleMessage(cMessage *msg) override;
+    void loadMessageFromFile(std::string filename);
+    void SendNextMessage();
+    void finishSession();
+    void SimulateErrors(MyMessage *msg);
+    std::string BoolToString(bool b);
+    std ::string stuffPayload(std::string payload);
+    void sendFrame(MyMessage*msg,int duplicateorder);
+    char calculateParityByte(std::string stuffedPayload);
+    void modifybit(std::string &paylaodToSend);
 };
 
 #endif

@@ -37,25 +37,34 @@ void Receiver::handleMessage(cMessage *msg1)
     std::string stuffedPayload = msg->getM_Payload();
     std::string trailer = msg->getM_Trailer();
     std::string result = "";
-    bool errorDetected = hasSingleBitError(stuffedPayload, trailer) || msg->getId()!=id;
+    bool haseBitError=hasSingleBitError(stuffedPayload, trailer);
+    if(haseBitError)
+    {
+        EV<<"Detected a single bit error"<<endl;
+    }
+    bool errorDetected =haseBitError || msg->getId()!=id;
     if (errorDetected) {
         std::string unstuffedPayload = unstuffPayload(stuffedPayload);
-        result = binaryToAscii(unstuffedPayload);
+        //result = binaryToAscii(unstuffedPayload);
         logAction("Received","message",result,id,1);
         MyMessage *nack = new MyMessage();
         nack->setM_Type(2);
         nack->setId(id);
-        send(nack,"port$o");
+        //send(nack,"port$o");
+        sendDelayed(nack, 5, "port$o");
         logAction("Sent","NACK","",id,0);
         }
     else {
         std::string unstuffedPayload = unstuffPayload(stuffedPayload);
-        result = binaryToAscii(unstuffedPayload);
+        //result = binaryToAscii(unstuffedPayload);
+        result =unstuffedPayload;
         logAction("Received","message",result,id,0);
         MyMessage *ack = new MyMessage();
         ack->setM_Type(1);
         ack->setId(id);
-        logAction("Sent","ACK","",id++,0);
+        sendDelayed(ack, 5, "port$o");
+        logAction("Sent","ACK","",id,0);
+        id = 1-id;
         }
 
 }
@@ -79,7 +88,17 @@ std::string Receiver::unstuffPayload(const std::string& stuffed) {
 }
 
 bool Receiver::hasSingleBitError(const std::string& stuffedPayload, const std::string& parityByteStr) {
-    if (parityByteStr.empty()) return true; // Can't check without trailer
+
+    //EV<<parityByteStr<<endl;
+    if (parityByteStr.empty()){
+        EV<<"Parity Byte is Empty"<<endl;
+        return true; // Can't check without trailer
+    }
+
+    if (parityByteStr.length() != 1)
+    {
+        EV<<"Parity bit Length is longer than 1"<<endl;
+    }
 
     // Convert trailer to char
     unsigned char parityByte = parityByteStr[0];

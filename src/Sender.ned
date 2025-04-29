@@ -20,6 +20,12 @@ package project;
 //
 simple Sender
 {
+    parameters:
+        double st;              
+        double to;             
+        double td;              
+        double tt;              
+        double pt;             
     gates:
         inout port;
 }
