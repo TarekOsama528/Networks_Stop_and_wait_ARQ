@@ -41,18 +41,28 @@ void Receiver::handleMessage(cMessage *msg1)
     if(haseBitError)
     {
         EV<<"Detected a single bit error"<<endl;
+
     }
     bool errorDetected =haseBitError || msg->getId()!=id;
     if (errorDetected) {
         std::string unstuffedPayload = unstuffPayload(stuffedPayload);
         //result = binaryToAscii(unstuffedPayload);
-        logAction("Received","message",result,id,1);
+        logAction("Received","message",unstuffedPayload,msg->getId(),1);
         MyMessage *nack = new MyMessage();
         nack->setM_Type(2);
         nack->setId(id);
+        if(haseBitError)
+        {
+            nack->setError_Type(0);
+        }
+        else
+        {
+            nack->setError_Type(1);
+        }
+
         //send(nack,"port$o");
         sendDelayed(nack, 5, "port$o");
-        logAction("Sent","NACK","",id,0);
+        logAction("Sent","NACK",unstuffedPayload,id,0);
         }
     else {
         std::string unstuffedPayload = unstuffPayload(stuffedPayload);
@@ -63,7 +73,8 @@ void Receiver::handleMessage(cMessage *msg1)
         ack->setM_Type(1);
         ack->setId(id);
         sendDelayed(ack, 5, "port$o");
-        logAction("Sent","ACK","",id,0);
+        Rec_Messages.push_back(result);
+        logAction("Sent","ACK",unstuffedPayload,id,0);
         id = 1-id;
         }
 
@@ -71,10 +82,9 @@ void Receiver::handleMessage(cMessage *msg1)
 
 
 
-
 std::string Receiver::unstuffPayload(const std::string& stuffed) {
     std::string unstuffed;
-    for (size_t i = 0; i < stuffed.length(); ++i) {
+    for (size_t i = 1; i < stuffed.length()-1; ++i) {
         if (stuffed[i] == '/') {
             i++; // Skip the escape character
             if (i < stuffed.length()) {
@@ -84,6 +94,7 @@ std::string Receiver::unstuffPayload(const std::string& stuffed) {
             unstuffed += stuffed[i];
         }
     }
+    //unstuffed -='$';
     return unstuffed;
 }
 
@@ -126,7 +137,7 @@ void Receiver::logAction(const std::string& direction, const std::string& msgTyp
        << ", modified=" << modified << "\n";
 
     // Append to external text file
-    std::ofstream outFile("receiver_log.txt", std::ios::app); // append mode
+    std::ofstream outFile("../src/output.txt", std::ios::app); // append mode
     if (outFile.is_open()) {
         outFile << "At time=" << simTime()
                 << " Receiver " << direction

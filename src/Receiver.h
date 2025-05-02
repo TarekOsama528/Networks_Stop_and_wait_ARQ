@@ -17,6 +17,7 @@
 #define __PROJECT_RECEIVER_H_
 
 #include <omnetpp.h>
+#include <vector>
 
 #include "MyMessage_m.h"
 
@@ -27,6 +28,9 @@ using namespace omnetpp;
  */
 class Receiver : public cSimpleModule
 {
+  private:
+    std::vector<std::string> Rec_Messages;
+
   protected:
     virtual void initialize() override;
     std::string unstuffPayload(const std::string& stuffed);

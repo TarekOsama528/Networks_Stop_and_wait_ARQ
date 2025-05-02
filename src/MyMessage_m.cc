@@ -181,6 +181,7 @@ void MyMessage::copy(const MyMessage& other)
     this->M_Type = other.M_Type;
     this->sending_time = other.sending_time;
     this->id = other.id;
+    this->Error_Type = other.Error_Type;
     this->modification = other.modification;
     this->duplication = other.duplication;
     this->delay = other.delay;
@@ -196,6 +197,7 @@ void MyMessage::parsimPack(omnetpp::cCommBuffer *b) const
     doParsimPacking(b,this->M_Type);
     doParsimPacking(b,this->sending_time);
     doParsimPacking(b,this->id);
+    doParsimPacking(b,this->Error_Type);
     doParsimPacking(b,this->modification);
     doParsimPacking(b,this->duplication);
     doParsimPacking(b,this->delay);
@@ -211,6 +213,7 @@ void MyMessage::parsimUnpack(omnetpp::cCommBuffer *b)
     doParsimUnpacking(b,this->M_Type);
     doParsimUnpacking(b,this->sending_time);
     doParsimUnpacking(b,this->id);
+    doParsimUnpacking(b,this->Error_Type);
     doParsimUnpacking(b,this->modification);
     doParsimUnpacking(b,this->duplication);
     doParsimUnpacking(b,this->delay);
@@ -277,6 +280,16 @@ void MyMessage::setId(int id)
     this->id = id;
 }
 
+bool MyMessage::getError_Type() const
+{
+    return this->Error_Type;
+}
+
+void MyMessage::setError_Type(bool Error_Type)
+{
+    this->Error_Type = Error_Type;
+}
+
 bool MyMessage::getModification() const
 {
     return this->modification;
@@ -328,6 +341,7 @@ class MyMessageDescriptor : public omnetpp::cClassDescriptor
         FIELD_M_Type,
         FIELD_sending_time,
         FIELD_id,
+        FIELD_Error_Type,
         FIELD_modification,
         FIELD_duplication,
         FIELD_delay,
@@ -398,7 +412,7 @@ const char *MyMessageDescriptor::getProperty(const char *propertyName) const
 int MyMessageDescriptor::getFieldCount() const
 {
     omnetpp::cClassDescriptor *base = getBaseClassDescriptor();
-    return base ? 10+base->getFieldCount() : 10;
+    return base ? 11+base->getFieldCount() : 11;
 }
 
 unsigned int MyMessageDescriptor::getFieldTypeFlags(int field) const
@@ -416,12 +430,13 @@ unsigned int MyMessageDescriptor::getFieldTypeFlags(int field) const
         FD_ISEDITABLE,    // FIELD_M_Type
         FD_ISEDITABLE,    // FIELD_sending_time
         FD_ISEDITABLE,    // FIELD_id
+        FD_ISEDITABLE,    // FIELD_Error_Type
         FD_ISEDITABLE,    // FIELD_modification
         FD_ISEDITABLE,    // FIELD_duplication
         FD_ISEDITABLE,    // FIELD_delay
         FD_ISEDITABLE,    // FIELD_loss
     };
-    return (field >= 0 && field < 10) ? fieldTypeFlags[field] : 0;
+    return (field >= 0 && field < 11) ? fieldTypeFlags[field] : 0;
 }
 
 const char *MyMessageDescriptor::getFieldName(int field) const
@@ -439,12 +454,13 @@ const char *MyMessageDescriptor::getFieldName(int field) const
         "M_Type",
         "sending_time",
         "id",
+        "Error_Type",
         "modification",
         "duplication",
         "delay",
         "loss",
     };
-    return (field >= 0 && field < 10) ? fieldNames[field] : nullptr;
+    return (field >= 0 && field < 11) ? fieldNames[field] : nullptr;
 }
 
 int MyMessageDescriptor::findField(const char *fieldName) const
@@ -457,10 +473,11 @@ int MyMessageDescriptor::findField(const char *fieldName) const
     if (strcmp(fieldName, "M_Type") == 0) return baseIndex + 3;
     if (strcmp(fieldName, "sending_time") == 0) return baseIndex + 4;
     if (strcmp(fieldName, "id") == 0) return baseIndex + 5;
-    if (strcmp(fieldName, "modification") == 0) return baseIndex + 6;
-    if (strcmp(fieldName, "duplication") == 0) return baseIndex + 7;
-    if (strcmp(fieldName, "delay") == 0) return baseIndex + 8;
-    if (strcmp(fieldName, "loss") == 0) return baseIndex + 9;
+    if (strcmp(fieldName, "Error_Type") == 0) return baseIndex + 6;
+    if (strcmp(fieldName, "modification") == 0) return baseIndex + 7;
+    if (strcmp(fieldName, "duplication") == 0) return baseIndex + 8;
+    if (strcmp(fieldName, "delay") == 0) return baseIndex + 9;
+    if (strcmp(fieldName, "loss") == 0) return baseIndex + 10;
     return base ? base->findField(fieldName) : -1;
 }
 
@@ -479,12 +496,13 @@ const char *MyMessageDescriptor::getFieldTypeString(int field) const
         "int",    // FIELD_M_Type
         "float",    // FIELD_sending_time
         "int",    // FIELD_id
+        "bool",    // FIELD_Error_Type
         "bool",    // FIELD_modification
         "bool",    // FIELD_duplication
         "bool",    // FIELD_delay
         "bool",    // FIELD_loss
     };
-    return (field >= 0 && field < 10) ? fieldTypeStrings[field] : nullptr;
+    return (field >= 0 && field < 11) ? fieldTypeStrings[field] : nullptr;
 }
 
 const char **MyMessageDescriptor::getFieldPropertyNames(int field) const
@@ -573,6 +591,7 @@ std::string MyMessageDescriptor::getFieldValueAsString(omnetpp::any_ptr object, 
         case FIELD_M_Type: return long2string(pp->getM_Type());
         case FIELD_sending_time: return double2string(pp->getSending_time());
         case FIELD_id: return long2string(pp->getId());
+        case FIELD_Error_Type: return bool2string(pp->getError_Type());
         case FIELD_modification: return bool2string(pp->getModification());
         case FIELD_duplication: return bool2string(pp->getDuplication());
         case FIELD_delay: return bool2string(pp->getDelay());
@@ -599,6 +618,7 @@ void MyMessageDescriptor::setFieldValueAsString(omnetpp::any_ptr object, int fie
         case FIELD_M_Type: pp->setM_Type(string2long(value)); break;
         case FIELD_sending_time: pp->setSending_time(string2double(value)); break;
         case FIELD_id: pp->setId(string2long(value)); break;
+        case FIELD_Error_Type: pp->setError_Type(string2bool(value)); break;
         case FIELD_modification: pp->setModification(string2bool(value)); break;
         case FIELD_duplication: pp->setDuplication(string2bool(value)); break;
         case FIELD_delay: pp->setDelay(string2bool(value)); break;
@@ -623,6 +643,7 @@ omnetpp::cValue MyMessageDescriptor::getFieldValue(omnetpp::any_ptr object, int 
         case FIELD_M_Type: return pp->getM_Type();
         case FIELD_sending_time: return (double)(pp->getSending_time());
         case FIELD_id: return pp->getId();
+        case FIELD_Error_Type: return pp->getError_Type();
         case FIELD_modification: return pp->getModification();
         case FIELD_duplication: return pp->getDuplication();
         case FIELD_delay: return pp->getDelay();
@@ -649,6 +670,7 @@ void MyMessageDescriptor::setFieldValue(omnetpp::any_ptr object, int field, int 
         case FIELD_M_Type: pp->setM_Type(omnetpp::checked_int_cast<int>(value.intValue())); break;
         case FIELD_sending_time: pp->setSending_time(static_cast<float>(value.doubleValue())); break;
         case FIELD_id: pp->setId(omnetpp::checked_int_cast<int>(value.intValue())); break;
+        case FIELD_Error_Type: pp->setError_Type(value.boolValue()); break;
         case FIELD_modification: pp->setModification(value.boolValue()); break;
         case FIELD_duplication: pp->setDuplication(value.boolValue()); break;
         case FIELD_delay: pp->setDelay(value.boolValue()); break;

@@ -28,6 +28,8 @@ class MyMessage;
  *     int M_Type;
  *     float sending_time;
  *     int id;
+ *     bool Error_Type; //0 for modified 1 for dup
+ * 
  *     bool modification;
  *     bool duplication;
  *     bool delay;
@@ -44,6 +46,7 @@ class MyMessage : public ::omnetpp::cPacket
     int M_Type = 0;
     float sending_time = 0;
     int id = 0;
+    bool Error_Type = false;
     bool modification = false;
     bool duplication = false;
     bool delay = false;
@@ -81,6 +84,9 @@ class MyMessage : public ::omnetpp::cPacket
 
     virtual int getId() const;
     virtual void setId(int id);
+
+    virtual bool getError_Type() const;
+    virtual void setError_Type(bool Error_Type);
 
     virtual bool getModification() const;
     virtual void setModification(bool modification);

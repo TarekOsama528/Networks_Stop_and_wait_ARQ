@@ -1,0 +1,417 @@
+At time=5 The Session Started at time: 5s
+At time = 5 Sender Preparing message aaaa, id = 0
+At time =5.1 Sender Sends message [$aaaa$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=10.1 Receiver Received message [aaaa], ID=0, modified=0
+At time=10.1 Receiver Sent ACK [aaaa], ID=0, modified=0
+At time = 15.1 Sender received ACK for message ID = 0
+At time = 15.1 Sender Preparing message b$bbb, id = 1
+At time =15.2 Sender Sends message [$b/$âbb$] ID= 1,modified= 128, duplicated=1, delayed=0 , lost=0
+At time =15.3 Sender Sends message [$b/$âbb$] ID= 1,modified= 128, duplicated=2, delayed=0 , lost=0
+At time=20.2 Receiver Received message [b$âbb], ID=1, modified=1
+At time=20.2 Receiver Sent NACK [b$âbb], ID=1, modified=0
+At time=20.3 Receiver Received message [b$âbb], ID=1, modified=1
+At time=20.3 Receiver Sent NACK [b$âbb], ID=1, modified=0
+Received NACK for current ID = 1, Resending Message ID = 1
+Received NACK for current ID = 1, Resending Message ID = 1
+At time=30.2 Receiver Received message [b$bbb], ID=1, modified=0
+At time=30.2 Receiver Sent ACK [b$bbb], ID=1, modified=0
+At time=30.3 Receiver Received message [b$bbb], ID=1, modified=1
+At time=30.3 Receiver Sent NACK [b$bbb], ID=0, modified=0
+At time = 35.2 Sender received ACK for message ID = 1
+At time = 35.2 Sender Preparing message ccc$$c, id = 0
+At time =35.3 Sender Sends message [$ccc/$/$c$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=40.3 Receiver Received message [ccc$$c], ID=0, modified=0
+At time=40.3 Receiver Sent ACK [ccc$$c], ID=0, modified=0
+Received NACK for already ACKed ID = 0 (likely a duplicate frame at receiver), ignoring.
+At time = 45.3 Sender received ACK for message ID = 0
+At time = 45.3 Sender Preparing message d/$ddd, id = 1
+At time =45.4 Sender Sends message [$d///$ddd$] ID= 1,modified= -1, duplicated=1, delayed=0 , lost=0
+At time =45.5 Sender Sends message [$d///$ddd$] ID= 1,modified= -1, duplicated=2, delayed=0 , lost=0
+At time=50.4 Receiver Received message [d/$ddd], ID=1, modified=0
+At time=50.4 Receiver Sent ACK [d/$ddd], ID=1, modified=0
+At time=50.5 Receiver Received message [d/$ddd], ID=1, modified=1
+At time=50.5 Receiver Sent NACK [d/$ddd], ID=0, modified=0
+At time = 55.4 Sender received ACK for message ID = 1
+At time = 55.4 Sender Preparing message $eeee$, id = 0
+At time =55.5 Sender Sends message [$/$eeee/$$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=60.5 Receiver Received message [$eeee$], ID=0, modified=0
+At time=60.5 Receiver Sent ACK [$eeee$], ID=0, modified=0
+Received NACK for already ACKed ID = 0 (likely a duplicate frame at receiver), ignoring.
+At time = 65.5 Sender received ACK for message ID = 0
+At time = 65.5 Sender Preparing message aa, id = 1
+At time =65.6 Sender Sends message [$aa$] ID= 1,modified= -1, duplicated=1, delayed=0 , lost=0
+At time =65.7 Sender Sends message [$aa$] ID= 1,modified= -1, duplicated=2, delayed=0 , lost=0
+At time=70.6 Receiver Received message [aa], ID=1, modified=0
+At time=70.6 Receiver Sent ACK [aa], ID=1, modified=0
+At time=70.7 Receiver Received message [aa], ID=1, modified=1
+At time=70.7 Receiver Sent NACK [aa], ID=0, modified=0
+At time = 75.6 Sender received ACK for message ID = 1
+At time = 75.6 Sender Preparing message bb, id = 0
+At time =75.7 Sender Sends message [$cb$] ID= 0,modified= 1, duplicated=0, delayed=0 , lost=0
+At time=80.7 Receiver Received message [cb], ID=0, modified=1
+At time=80.7 Receiver Sent NACK [cb], ID=0, modified=0
+Received NACK for already ACKed ID = 0 (likely a duplicate frame at receiver), ignoring.
+Received NACK for current ID = 0, Resending Message ID = 0
+At time=90.7 Receiver Received message [bb], ID=0, modified=0
+At time=90.7 Receiver Sent ACK [bb], ID=0, modified=0
+At time = 95.7 Sender received ACK for message ID = 0
+At time = 95.7 Sender Preparing message cc, id = 1
+At time =95.8 Sender Sends message [$cc$] ID= 1,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=100.8 Receiver Received message [cc], ID=1, modified=0
+At time=100.8 Receiver Sent ACK [cc], ID=1, modified=0
+At time = 105.8 Sender received ACK for message ID = 1
+At time = 105.8 Sender Preparing message dd, id = 0
+At time =105.9 Sender Sends message [$dd$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=1
+At time= 120.8Sender Timed out, Resending Message ID = 0
+At time=125.8 Receiver Received message [dd], ID=0, modified=0
+At time=125.8 Receiver Sent ACK [dd], ID=0, modified=0
+At time = 130.8 Sender received ACK for message ID = 0
+At time = 130.8 Sender Preparing message ee, id = 1
+At time =130.9 Sender Sends message [$ee$] ID= 1,modified= -1, duplicated=1, delayed=0 , lost=0
+At time =131 Sender Sends message [$ee$] ID= 1,modified= -1, duplicated=2, delayed=0 , lost=0
+At time=135.9 Receiver Received message [ee], ID=1, modified=0
+At time=135.9 Receiver Sent ACK [ee], ID=1, modified=0
+At time=136 Receiver Received message [ee], ID=1, modified=1
+At time=136 Receiver Sent NACK [ee], ID=0, modified=0
+At time = 140.9 Sender received ACK for message ID = 1
+At time = 140.9 Sender Preparing message ta, id = 0
+At time =141 Sender Sends message [$ta$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=146 Receiver Received message [ta], ID=0, modified=0
+At time=146 Receiver Sent ACK [ta], ID=0, modified=0
+Received NACK for already ACKed ID = 0 (likely a duplicate frame at receiver), ignoring.
+At time = 151 Sender received ACK for message ID = 0
+At time = 151 Sender Preparing message tb, id = 1
+At time =151.1 Sender Sends message [$tb$] ID= 1,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=156.1 Receiver Received message [tb], ID=1, modified=0
+At time=156.1 Receiver Sent ACK [tb], ID=1, modified=0
+At time = 161.1 Sender received ACK for message ID = 1
+At time = 161.1 Sender Preparing message tc, id = 0
+At time =161.2 Sender Sends message [$tc$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=166.2 Receiver Received message [tc], ID=0, modified=0
+At time=166.2 Receiver Sent ACK [tc], ID=0, modified=0
+At time = 171.2 Sender received ACK for message ID = 0
+At time = 171.2 Sender Preparing message fa, id = 1
+At time =171.3 Sender Sends message [$fa$] ID= 1,modified= -1, duplicated=0, delayed=1 , lost=1
+At time= 186.2Sender Timed out, Resending Message ID = 1
+At time=191.2 Receiver Received message [fa], ID=1, modified=0
+At time=191.2 Receiver Sent ACK [fa], ID=1, modified=0
+At time = 196.2 Sender received ACK for message ID = 1
+At time = 196.2 Sender Preparing message fb, id = 0
+At time =196.3 Sender Sends message [$fb,] ID= 0,modified= 8, duplicated=0, delayed=1 , lost=0
+At time= 211.2Sender Timed out, Resending Message ID = 0
+At time=216.2 Receiver Received message [fb], ID=0, modified=0
+At time=216.2 Receiver Sent ACK [fb], ID=0, modified=0
+At time = 221.2 Sender received ACK for message ID = 0
+At time = 221.2 Sender Preparing message fcjnv, id = 1
+At time =221.3 Sender Sends message [$fcênv$] ID= 1,modified= 128, duplicated=1, delayed=0 , lost=0
+At time =221.4 Sender Sends message [$fcênv$] ID= 1,modified= 128, duplicated=2, delayed=0 , lost=0
+At time=221.3 Receiver Received message [fb], ID=0, modified=1
+At time=221.3 Receiver Sent NACK [fb], ID=1, modified=0
+At time=226.3 Receiver Received message [fcênv], ID=1, modified=1
+At time=226.3 Receiver Sent NACK [fcênv], ID=1, modified=0
+Received NACK for current ID = 1, Resending Message ID = 1
+At time=226.4 Receiver Received message [fcênv], ID=1, modified=1
+At time=226.4 Receiver Sent NACK [fcênv], ID=1, modified=0
+Received NACK for current ID = 1, Resending Message ID = 1
+At time=231.3 Receiver Received message [fcjnv], ID=1, modified=0
+At time=231.3 Receiver Sent ACK [fcjnv], ID=1, modified=0
+Received NACK for current ID = 1, Resending Message ID = 1
+At time=236.3 Receiver Received message [fcjnv], ID=1, modified=1
+At time=236.3 Receiver Sent NACK [fcjnv], ID=0, modified=0
+At time = 236.3 Sender received ACK for message ID = 1
+total transmission time = 231.3
+total number of transmission = 9
+the network throughput = 
+At time=236.4 Receiver Received message [fcjnv], ID=1, modified=1
+At time=236.4 Receiver Sent NACK [fcjnv], ID=0, modified=0
+At time=5 The Session Started at time: 5s
+At time = 5 Sender Preparing message aaaa, id = 0
+At time =5.1 Sender Sends message [$aaaa$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=10.1 Receiver Received message [aaaa], ID=0, modified=0
+At time=10.1 Receiver Sent ACK [aaaa], ID=0, modified=0
+At time = 15.1 Sender received ACK for message ID = 0
+At time = 15.1 Sender Preparing message b$bbb, id = 1
+At time =15.2 Sender Sends message [$b/$âbb$] ID= 1,modified= 128, duplicated=1, delayed=0 , lost=0
+At time =15.3 Sender Sends message [$b/$âbb$] ID= 1,modified= 128, duplicated=2, delayed=0 , lost=0
+At time=20.2 Receiver Received message [b$âbb], ID=1, modified=1
+At time=20.2 Receiver Sent NACK [b$âbb], ID=1, modified=0
+At time=20.3 Receiver Received message [b$âbb], ID=1, modified=1
+At time=20.3 Receiver Sent NACK [b$âbb], ID=1, modified=0
+Received NACK for current ID = 1, Resending Message ID = 1
+Received NACK for current ID = 1, Resending Message ID = 1
+At time=30.2 Receiver Received message [b$bbb], ID=1, modified=0
+At time=30.2 Receiver Sent ACK [b$bbb], ID=1, modified=0
+At time=30.3 Receiver Received message [b$bbb], ID=1, modified=1
+At time=30.3 Receiver Sent NACK [b$bbb], ID=0, modified=0
+At time = 35.2 Sender received ACK for message ID = 1
+At time = 35.2 Sender Preparing message ccc$$c, id = 0
+At time =35.3 Sender Sends message [$ccc/$/$c$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=40.3 Receiver Received message [ccc$$c], ID=0, modified=0
+At time=40.3 Receiver Sent ACK [ccc$$c], ID=0, modified=0
+Received NACK for already ACKed ID = 0 (likely a duplicate frame at receiver), ignoring.
+At time = 45.3 Sender received ACK for message ID = 0
+At time = 45.3 Sender Preparing message d/$ddd, id = 1
+At time =45.4 Sender Sends message [$d///$ddd$] ID= 1,modified= -1, duplicated=1, delayed=0 , lost=0
+At time =45.5 Sender Sends message [$d///$ddd$] ID= 1,modified= -1, duplicated=2, delayed=0 , lost=0
+At time=50.4 Receiver Received message [d/$ddd], ID=1, modified=0
+At time=50.4 Receiver Sent ACK [d/$ddd], ID=1, modified=0
+At time=50.5 Receiver Received message [d/$ddd], ID=1, modified=1
+At time=50.5 Receiver Sent NACK [d/$ddd], ID=0, modified=0
+At time = 55.4 Sender received ACK for message ID = 1
+At time = 55.4 Sender Preparing message $eeee$, id = 0
+At time =55.5 Sender Sends message [$/$eeee/$$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=60.5 Receiver Received message [$eeee$], ID=0, modified=0
+At time=60.5 Receiver Sent ACK [$eeee$], ID=0, modified=0
+Received NACK for already ACKed ID = 0 (likely a duplicate frame at receiver), ignoring.
+At time = 65.5 Sender received ACK for message ID = 0
+At time = 65.5 Sender Preparing message aa, id = 1
+At time =65.6 Sender Sends message [$aa$] ID= 1,modified= -1, duplicated=1, delayed=0 , lost=0
+At time =65.7 Sender Sends message [$aa$] ID= 1,modified= -1, duplicated=2, delayed=0 , lost=0
+At time=70.6 Receiver Received message [aa], ID=1, modified=0
+At time=70.6 Receiver Sent ACK [aa], ID=1, modified=0
+At time=70.7 Receiver Received message [aa], ID=1, modified=1
+At time=70.7 Receiver Sent NACK [aa], ID=0, modified=0
+At time = 75.6 Sender received ACK for message ID = 1
+At time = 75.6 Sender Preparing message bb, id = 0
+At time =75.7 Sender Sends message [$cb$] ID= 0,modified= 1, duplicated=0, delayed=0 , lost=0
+At time=80.7 Receiver Received message [cb], ID=0, modified=1
+At time=80.7 Receiver Sent NACK [cb], ID=0, modified=0
+Received NACK for already ACKed ID = 0 (likely a duplicate frame at receiver), ignoring.
+Received NACK for current ID = 0, Resending Message ID = 0
+At time=90.7 Receiver Received message [bb], ID=0, modified=0
+At time=90.7 Receiver Sent ACK [bb], ID=0, modified=0
+At time = 95.7 Sender received ACK for message ID = 0
+At time = 95.7 Sender Preparing message cc, id = 1
+At time =95.8 Sender Sends message [$cc$] ID= 1,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=100.8 Receiver Received message [cc], ID=1, modified=0
+At time=100.8 Receiver Sent ACK [cc], ID=1, modified=0
+At time = 105.8 Sender received ACK for message ID = 1
+At time = 105.8 Sender Preparing message dd, id = 0
+At time =105.9 Sender Sends message [$dd$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=1
+At time= 120.8Sender Timed out, Resending Message ID = 0
+At time=125.8 Receiver Received message [dd], ID=0, modified=0
+At time=125.8 Receiver Sent ACK [dd], ID=0, modified=0
+At time = 130.8 Sender received ACK for message ID = 0
+At time = 130.8 Sender Preparing message ee, id = 1
+At time =130.9 Sender Sends message [$ee$] ID= 1,modified= -1, duplicated=1, delayed=0 , lost=0
+At time =131 Sender Sends message [$ee$] ID= 1,modified= -1, duplicated=2, delayed=0 , lost=0
+At time=135.9 Receiver Received message [ee], ID=1, modified=0
+At time=135.9 Receiver Sent ACK [ee], ID=1, modified=0
+At time=136 Receiver Received message [ee], ID=1, modified=1
+At time=136 Receiver Sent NACK [ee], ID=0, modified=0
+At time = 140.9 Sender received ACK for message ID = 1
+At time = 140.9 Sender Preparing message ta, id = 0
+At time =141 Sender Sends message [$ta$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=146 Receiver Received message [ta], ID=0, modified=0
+At time=146 Receiver Sent ACK [ta], ID=0, modified=0
+Received NACK for already ACKed ID = 0 (likely a duplicate frame at receiver), ignoring.
+At time = 151 Sender received ACK for message ID = 0
+At time = 151 Sender Preparing message tb, id = 1
+At time =151.1 Sender Sends message [$tb$] ID= 1,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=156.1 Receiver Received message [tb], ID=1, modified=0
+At time=156.1 Receiver Sent ACK [tb], ID=1, modified=0
+At time = 161.1 Sender received ACK for message ID = 1
+At time = 161.1 Sender Preparing message tc, id = 0
+At time =161.2 Sender Sends message [$tc$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=166.2 Receiver Received message [tc], ID=0, modified=0
+At time=166.2 Receiver Sent ACK [tc], ID=0, modified=0
+At time = 171.2 Sender received ACK for message ID = 0
+At time = 171.2 Sender Preparing message fa, id = 1
+At time =171.3 Sender Sends message [$fa$] ID= 1,modified= -1, duplicated=0, delayed=1 , lost=1
+At time= 186.2Sender Timed out, Resending Message ID = 1
+At time=191.2 Receiver Received message [fa], ID=1, modified=0
+At time=191.2 Receiver Sent ACK [fa], ID=1, modified=0
+At time = 196.2 Sender received ACK for message ID = 1
+At time = 196.2 Sender Preparing message fb, id = 0
+At time =196.3 Sender Sends message [$fb,] ID= 0,modified= 8, duplicated=0, delayed=1 , lost=0
+At time= 211.2Sender Timed out, Resending Message ID = 0
+At time=216.2 Receiver Received message [fb], ID=0, modified=0
+At time=216.2 Receiver Sent ACK [fb], ID=0, modified=0
+At time = 221.2 Sender received ACK for message ID = 0
+At time = 221.2 Sender Preparing message fcjnv, id = 1
+At time =221.3 Sender Sends message [$fcênv$] ID= 1,modified= 128, duplicated=1, delayed=0 , lost=0
+At time =221.4 Sender Sends message [$fcênv$] ID= 1,modified= 128, duplicated=2, delayed=0 , lost=0
+At time=221.3 Receiver Received message [fb], ID=0, modified=1
+At time=221.3 Receiver Sent NACK [fb], ID=1, modified=0
+At time=226.3 Receiver Received message [fcênv], ID=1, modified=1
+At time=226.3 Receiver Sent NACK [fcênv], ID=1, modified=0
+Received NACK for current ID = 1, Resending Message ID = 1
+At time=226.4 Receiver Received message [fcênv], ID=1, modified=1
+At time=226.4 Receiver Sent NACK [fcênv], ID=1, modified=0
+Received NACK for current ID = 1, Resending Message ID = 1
+At time=231.3 Receiver Received message [fcjnv], ID=1, modified=0
+At time=231.3 Receiver Sent ACK [fcjnv], ID=1, modified=0
+Received NACK for current ID = 1, Resending Message ID = 1
+At time=236.3 Receiver Received message [fcjnv], ID=1, modified=1
+At time=236.3 Receiver Sent NACK [fcjnv], ID=0, modified=0
+At time = 236.3 Sender received ACK for message ID = 1
+total transmission time = 231.3
+total number of transmission = 48
+the network throughput = 
+At time=236.4 Receiver Received message [fcjnv], ID=1, modified=1
+At time=236.4 Receiver Sent NACK [fcjnv], ID=0, modified=0
+At time=5 The Session Started at time: 5s
+At time = 5 Sender Preparing message aaaa, id = 0
+At time =5.1 Sender Sends message [$aaaa$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=10.1 Receiver Received message [aaaa], ID=0, modified=0
+At time=10.1 Receiver Sent ACK [aaaa], ID=0, modified=0
+At time = 15.1 Sender received ACK for message ID = 0
+At time = 15.1 Sender Preparing message b$bbb, id = 1
+At time =15.2 Sender Sends message [$b/$âbb$] ID= 1,modified= 128, duplicated=1, delayed=0 , lost=0
+At time =15.3 Sender Sends message [$b/$âbb$] ID= 1,modified= 128, duplicated=2, delayed=0 , lost=0
+At time=20.2 Receiver Received message [b$âbb], ID=1, modified=1
+At time=20.2 Receiver Sent NACK [b$âbb], ID=1, modified=0
+At time=20.3 Receiver Received message [b$âbb], ID=1, modified=1
+At time=20.3 Receiver Sent NACK [b$âbb], ID=1, modified=0
+Received NACK for current ID = 1, Resending Message ID = 1
+Received NACK for current ID = 1, Resending Message ID = 1
+At time=30.2 Receiver Received message [b$bbb], ID=1, modified=0
+At time=30.2 Receiver Sent ACK [b$bbb], ID=1, modified=0
+At time=30.3 Receiver Received message [b$bbb], ID=1, modified=1
+At time=30.3 Receiver Sent NACK [b$bbb], ID=0, modified=0
+At time = 35.2 Sender received ACK for message ID = 1
+At time = 35.2 Sender Preparing message ccc$$c, id = 0
+At time =35.3 Sender Sends message [$ccc/$/$c$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=40.3 Receiver Received message [ccc$$c], ID=0, modified=0
+At time=40.3 Receiver Sent ACK [ccc$$c], ID=0, modified=0
+Received NACK for already ACKed ID = 0 (likely a duplicate frame at receiver), ignoring.
+At time = 45.3 Sender received ACK for message ID = 0
+At time = 45.3 Sender Preparing message d/$ddd, id = 1
+At time =45.4 Sender Sends message [$d///$ddd$] ID= 1,modified= -1, duplicated=1, delayed=0 , lost=0
+At time =45.5 Sender Sends message [$d///$ddd$] ID= 1,modified= -1, duplicated=2, delayed=0 , lost=0
+At time=50.4 Receiver Received message [d/$ddd], ID=1, modified=0
+At time=50.4 Receiver Sent ACK [d/$ddd], ID=1, modified=0
+At time=50.5 Receiver Received message [d/$ddd], ID=1, modified=1
+At time=50.5 Receiver Sent NACK [d/$ddd], ID=0, modified=0
+At time = 55.4 Sender received ACK for message ID = 1
+At time = 55.4 Sender Preparing message $eeee$, id = 0
+At time =55.5 Sender Sends message [$/$eeee/$$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=60.5 Receiver Received message [$eeee$], ID=0, modified=0
+At time=60.5 Receiver Sent ACK [$eeee$], ID=0, modified=0
+Received NACK for already ACKed ID = 0 (likely a duplicate frame at receiver), ignoring.
+At time = 65.5 Sender received ACK for message ID = 0
+At time = 65.5 Sender Preparing message aa, id = 1
+At time =65.6 Sender Sends message [$aa$] ID= 1,modified= -1, duplicated=1, delayed=0 , lost=0
+At time =65.7 Sender Sends message [$aa$] ID= 1,modified= -1, duplicated=2, delayed=0 , lost=0
+At time=70.6 Receiver Received message [aa], ID=1, modified=0
+At time=70.6 Receiver Sent ACK [aa], ID=1, modified=0
+At time=70.7 Receiver Received message [aa], ID=1, modified=1
+At time=70.7 Receiver Sent NACK [aa], ID=0, modified=0
+At time = 75.6 Sender received ACK for message ID = 1
+At time = 75.6 Sender Preparing message bb, id = 0
+At time =75.7 Sender Sends message [$cb$] ID= 0,modified= 1, duplicated=0, delayed=0 , lost=0
+At time=80.7 Receiver Received message [cb], ID=0, modified=1
+At time=80.7 Receiver Sent NACK [cb], ID=0, modified=0
+Received NACK for already ACKed ID = 0 (likely a duplicate frame at receiver), ignoring.
+Received NACK for current ID = 0, Resending Message ID = 0
+At time=90.7 Receiver Received message [bb], ID=0, modified=0
+At time=90.7 Receiver Sent ACK [bb], ID=0, modified=0
+At time = 95.7 Sender received ACK for message ID = 0
+At time = 95.7 Sender Preparing message cc, id = 1
+At time =95.8 Sender Sends message [$cc$] ID= 1,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=100.8 Receiver Received message [cc], ID=1, modified=0
+At time=100.8 Receiver Sent ACK [cc], ID=1, modified=0
+At time = 105.8 Sender received ACK for message ID = 1
+At time = 105.8 Sender Preparing message dd, id = 0
+At time =105.9 Sender Sends message [$dd$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=1
+At time= 120.8Sender Timed out, Resending Message ID = 0
+At time=125.8 Receiver Received message [dd], ID=0, modified=0
+At time=125.8 Receiver Sent ACK [dd], ID=0, modified=0
+At time = 130.8 Sender received ACK for message ID = 0
+At time = 130.8 Sender Preparing message ee, id = 1
+At time =130.9 Sender Sends message [$ee$] ID= 1,modified= -1, duplicated=1, delayed=0 , lost=0
+At time =131 Sender Sends message [$ee$] ID= 1,modified= -1, duplicated=2, delayed=0 , lost=0
+At time=135.9 Receiver Received message [ee], ID=1, modified=0
+At time=135.9 Receiver Sent ACK [ee], ID=1, modified=0
+At time=136 Receiver Received message [ee], ID=1, modified=1
+At time=136 Receiver Sent NACK [ee], ID=0, modified=0
+At time = 140.9 Sender received ACK for message ID = 1
+At time = 140.9 Sender Preparing message ta, id = 0
+At time =141 Sender Sends message [$ta$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=146 Receiver Received message [ta], ID=0, modified=0
+At time=146 Receiver Sent ACK [ta], ID=0, modified=0
+Received NACK for already ACKed ID = 0 (likely a duplicate frame at receiver), ignoring.
+At time = 151 Sender received ACK for message ID = 0
+At time = 151 Sender Preparing message tb, id = 1
+At time =151.1 Sender Sends message [$tb$] ID= 1,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=156.1 Receiver Received message [tb], ID=1, modified=0
+At time=156.1 Receiver Sent ACK [tb], ID=1, modified=0
+At time = 161.1 Sender received ACK for message ID = 1
+At time = 161.1 Sender Preparing message tc, id = 0
+At time =161.2 Sender Sends message [$tc$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=166.2 Receiver Received message [tc], ID=0, modified=0
+At time=166.2 Receiver Sent ACK [tc], ID=0, modified=0
+At time = 171.2 Sender received ACK for message ID = 0
+At time = 171.2 Sender Preparing message fa, id = 1
+At time =171.3 Sender Sends message [$fa$] ID= 1,modified= -1, duplicated=0, delayed=1 , lost=1
+At time= 186.2Sender Timed out, Resending Message ID = 1
+At time=191.2 Receiver Received message [fa], ID=1, modified=0
+At time=191.2 Receiver Sent ACK [fa], ID=1, modified=0
+At time = 196.2 Sender received ACK for message ID = 1
+At time = 196.2 Sender Preparing message fb, id = 0
+At time =196.3 Sender Sends message [$fb,] ID= 0,modified= 8, duplicated=0, delayed=1 , lost=0
+At time= 211.2Sender Timed out, Resending Message ID = 0
+At time=216.2 Receiver Received message [fb], ID=0, modified=0
+At time=216.2 Receiver Sent ACK [fb], ID=0, modified=0
+At time = 221.2 Sender received ACK for message ID = 0
+At time = 221.2 Sender Preparing message fcjnv, id = 1
+At time =221.3 Sender Sends message [$fcênv$] ID= 1,modified= 128, duplicated=1, delayed=0 , lost=0
+At time =221.4 Sender Sends message [$fcênv$] ID= 1,modified= 128, duplicated=2, delayed=0 , lost=0
+At time=221.3 Receiver Received message [fb], ID=0, modified=1
+At time=221.3 Receiver Sent NACK [fb], ID=1, modified=0
+At time=226.3 Receiver Received message [fcênv], ID=1, modified=1
+At time=226.3 Receiver Sent NACK [fcênv], ID=1, modified=0
+Received NACK for current ID = 1, Resending Message ID = 1
+At time=226.4 Receiver Received message [fcênv], ID=1, modified=1
+At time=226.4 Receiver Sent NACK [fcênv], ID=1, modified=0
+Received NACK for current ID = 1, Resending Message ID = 1
+At time=231.3 Receiver Received message [fcjnv], ID=1, modified=0
+At time=231.3 Receiver Sent ACK [fcjnv], ID=1, modified=0
+Received NACK for current ID = 1, Resending Message ID = 1
+At time=236.3 Receiver Received message [fcjnv], ID=1, modified=1
+At time=236.3 Receiver Sent NACK [fcjnv], ID=0, modified=0
+At time = 236.3 Sender received ACK for message ID = 1
+total transmission time = 231.3
+total number of transmission = 54
+the network throughput = 
+At time=236.4 Receiver Received message [fcjnv], ID=1, modified=1
+At time=236.4 Receiver Sent NACK [fcjnv], ID=0, modified=0
+At time=5 The Session Started at time: 5s
+At time = 5 Sender Preparing message aaaa, id = 0
+At time =5.1 Sender Sends message [$aaaa$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=10.1 Receiver Received message [aaaa], ID=0, modified=0
+At time=10.1 Receiver Sent ACK [aaaa], ID=0, modified=0
+At time = 15.1 Sender received ACK for message ID = 0
+At time = 15.1 Sender Preparing message b$bbb, id = 1
+At time =15.2 Sender Sends message [$b/$âbb$] ID= 1,modified= 128, duplicated=1, delayed=0 , lost=0
+At time =15.3 Sender Sends message [$b/$âbb$] ID= 1,modified= 128, duplicated=2, delayed=0 , lost=0
+At time=20.2 Receiver Received message [b$âbb], ID=1, modified=1
+At time=20.2 Receiver Sent NACK [b$âbb], ID=1, modified=0
+At time=20.3 Receiver Received message [b$âbb], ID=1, modified=1
+At time=20.3 Receiver Sent NACK [b$âbb], ID=1, modified=0
+At time= 25.2 Received NACK for current ID = 1, Resending Message ID = 1
+At time= 25.3 Received NACK for current ID = 1, Resending Message ID = 1
+At time=30.2 Receiver Received message [b$bbb], ID=1, modified=0
+At time=30.2 Receiver Sent ACK [b$bbb], ID=1, modified=0
+At time=30.3 Receiver Received message [b$bbb], ID=1, modified=1
+At time=30.3 Receiver Sent NACK [b$bbb], ID=0, modified=0
+At time = 35.2 Sender received ACK for message ID = 1
+At time = 35.2 Sender Preparing message ccc$$c, id = 0
+At time =35.3 Sender Sends message [$ccc/$/$c$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=40.3 Receiver Received message [ccc$$c], ID=0, modified=0
+At time=40.3 Receiver Sent ACK [ccc$$c], ID=0, modified=0
+At time= 35.3 Received NACK for already ACKed ID = 0 (likely a duplicate frame at receiver), ignoring.
+At time = 45.3 Sender received ACK for message ID = 0
+At time = 45.3 Sender Preparing message d/$ddd, id = 1
+At time =45.4 Sender Sends message [$d///$ddd$] ID= 1,modified= -1, duplicated=1, delayed=0 , lost=0
+At time =45.5 Sender Sends message [$d///$ddd$] ID= 1,modified= -1, duplicated=2, delayed=0 , lost=0
+At time=50.4 Receiver Received message [d/$ddd], ID=1, modified=0
+At time=50.4 Receiver Sent ACK [d/$ddd], ID=1, modified=0
+At time=50.5 Receiver Received message [d/$ddd], ID=1, modified=1
+At time=50.5 Receiver Sent NACK [d/$ddd], ID=0, modified=0
+At time = 55.4 Sender received ACK for message ID = 1
+At time = 55.4 Sender Preparing message $eeee$, id = 0
+At time =55.5 Sender Sends message [$/$eeee/$$] ID= 0,modified= -1, duplicated=0, delayed=0 , lost=0
+At time=60.5 Receiver Received message [$eeee$], ID=0, modified=0
+At time=60.5 Receiver Sent ACK [$eeee$], ID=0, modified=0
+At time= 55.5 Received NACK for already ACKed ID = 0 (likely a duplicate frame at receiver), ignoring.

@@ -42,6 +42,10 @@ class Sender : public cSimpleModule
     bool waitforAck =false;
     int correctMessages=0;
     std::string unmodifiedpayload;
+    int expected_ack=0;
+    int lastAckedSeq=-1;
+    std::vector<std::string> errorMessages;
+    std::ofstream outputFile;
 
   protected:
 
@@ -50,12 +54,13 @@ class Sender : public cSimpleModule
     void loadMessageFromFile(std::string filename);
     void SendNextMessage();
     void finishSession();
-    void SimulateErrors(MyMessage *msg);
+    void SimulateErrors(MyMessage *msg,std::string errorcode);
     std::string BoolToString(bool b);
     std ::string stuffPayload(std::string payload);
-    void sendFrame(MyMessage*msg,int duplicateorder);
+    //void sendFrame(MyMessage*msg,int duplicateorder);
     char calculateParityByte(std::string stuffedPayload);
-    void modifybit(std::string &paylaodToSend);
+    void modifybit(std::string &paylaodToSend,int &modifiedindex);
+    ;
 };
 
 #endif

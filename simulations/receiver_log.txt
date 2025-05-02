@@ -1,8 +1,0 @@
-At time=10 Receiver Received message [$aaaa$], ID=0, modified=0
-At time=10 Receiver Sent ACK [], ID=0, modified=0
-At time=10.1 Receiver Received message [], ID=1, modified=1
-At time=10.1 Receiver Sent NACK [], ID=1, modified=0
-At time=20 Receiver Received message [$b$bbb$], ID=1, modified=0
-At time=20 Receiver Sent ACK [], ID=1, modified=0
-At time=20.1 Receiver Received message [], ID=0, modified=1
-At time=20.1 Receiver Sent NACK [], ID=0, modified=0
