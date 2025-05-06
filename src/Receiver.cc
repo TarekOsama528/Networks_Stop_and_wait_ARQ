@@ -137,7 +137,7 @@ void Receiver::logAction(const std::string& direction, const std::string& msgTyp
        << ", modified=" << modified << "\n";
 
     // Append to external text file
-    std::ofstream outFile("../src/output.txt", std::ios::app); // append mode
+    std::ofstream outFile("../src/output0.txt", std::ios::app); // append mode
     if (outFile.is_open()) {
         outFile << "At time=" << simTime()
                 << " Receiver " << direction

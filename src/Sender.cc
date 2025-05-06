@@ -29,7 +29,7 @@ void Sender::initialize()
 
     loadMessageFromFile("../src/input0.txt");
 
-    outputFile.open("../src/output.txt", std::ios::app);
+    outputFile.open("../src/output0.txt", std::ios::app);
     if(outputFile.is_open())
     {
         EV<<"Opened output file!!!"<<endl;
@@ -57,9 +57,10 @@ void Sender::handleMessage(cMessage *msg)
             outputFile <<"At time= "<<simTime()<<"Sender Timed out, Resending Message ID = " << currentMessage->getId() << endl;
             MyMessage *retransmit = currentMessage->dup();
             retransmit->setM_Payload(unmodifiedpayload.c_str());
-            sendDelayed(retransmit, tt, "port$o");
+            correctMessages++;
+            sendDelayed(retransmit, tt+pt, "port$o");
             totalpacketssent++;
-            scheduleAt(simTime() + to, timeoutEvent);
+            scheduleAt(simTime() + to+pt, timeoutEvent);
         }
         else
         {
@@ -77,7 +78,7 @@ void Sender::handleMessage(cMessage *msg)
                                            << " Sender received ACK for message ID = " << ack->getId() << endl;
 
                     lastAckedSeq = ack->getId();
-                    currentSeq = 1 - currentSeq;  // Flip only after correct ACK
+                    currentSeq = 1 - currentSeq;
                     cancelEvent(timeoutEvent);
                     waitforAck = false;
                     correctMessages++;
@@ -97,18 +98,25 @@ void Sender::handleMessage(cMessage *msg)
             {
                 if (ack->getError_Type() == 0)
                 {
+
+
                     EV <<"At time= "<<simTime()<<" Received NACK for current ID = " << ack->getId()
-                       << ", Resending Message ID = " << currentMessage->getId() << endl;
+                       << ", Starts Preparing Message["<<unmodifiedpayload<<"] ID = " << currentMessage->getId() << endl;
 
-                    outputFile <<"At time= "<<simTime()<< " Received NACK for current ID = " << ack->getId()
-                                           << ", Resending Message ID = " << currentMessage->getId() << endl;
+                    outputFile <<"At time= "<<simTime()<<" Received NACK for current ID = " << ack->getId()
+                                           << ", Starts Preparing Message["<<unmodifiedpayload<<"] ID = " << currentMessage->getId() << endl;
 
+                    correctMessages++;
                     MyMessage *retransmit = currentMessage->dup();
                     retransmit->setM_Payload(unmodifiedpayload.c_str());
                     cancelEvent(timeoutEvent);
-                    sendDelayed(retransmit, tt, "port$o");
+                    EV<<"At time ="<<simTime()+pt<<" Sender Sends message ["<<currentMessage->getM_Payload()<<"] ID= "<<currentMessage->getId()<<",modified= "<<0<<", duplicated="<<0<<", delayed="<<0<<" , lost="<<0<<endl;
+
+                    outputFile<<"At time ="<<simTime()+pt<<" Sender Sends message ["<<currentMessage->getM_Payload()<<"] ID= "<<currentMessage->getId()<<",modified= "<<0<<", duplicated="<<0<<", delayed="<<0<<" , lost="<<0<<endl;
+
+                    sendDelayed(retransmit, tt+pt, "port$o");
                     totalpacketssent+=2;
-                    scheduleAt(simTime() + to, timeoutEvent);
+                    scheduleAt(simTime() + to+pt, timeoutEvent);
                 }
                 else if (ack->getError_Type()==1)
                 {
@@ -200,7 +208,7 @@ void Sender::SimulateErrors(MyMessage *msg,std::string errorcode)
         delaytime=td;
     }
 
-    int modifiedbitpos=-1;
+    int modifiedbitpos=0;
     unmodifiedpayload=stuffedpayload;
     if(modification)
     {
@@ -211,6 +219,10 @@ void Sender::SimulateErrors(MyMessage *msg,std::string errorcode)
     {
         sendDelayed(msg->dup(), tt+pt+delaytime, "port$o");
         totalpacketssent++;
+        if(!modification)
+        {
+            correctMessages++;
+        }
     }
     currentMessage=msg;
     EV<<"At time ="<<simTime()+pt<<" Sender Sends message ["<<msg->getM_Payload()<<"] ID= "<<msg->getId()<<",modified= "<<modifiedbitpos<<", duplicated="<<BoolToString(duplication)<<", delayed="<<BoolToString(delay)<<" , lost="<<BoolToString(loss)<<endl;
@@ -226,7 +238,7 @@ void Sender::SimulateErrors(MyMessage *msg,std::string errorcode)
         EV<<"At time ="<<simTime()+pt+0.1<<" Sender Sends message ["<<msg->getM_Payload()<<"] ID= "<<msg->getId()<<",modified= "<<modifiedbitpos<<", duplicated=2"<<", delayed="<<BoolToString(delay)<<" , lost="<<BoolToString(loss)<<endl;
     }
 
-    scheduleAt(simTime() + to, timeoutEvent);
+    scheduleAt(simTime() + to+pt, timeoutEvent);
 
 }
 
@@ -255,9 +267,10 @@ char Sender::calculateParityByte(std::string stuffedPayload)
 
 void Sender::modifybit(std::string &paylaodToSend,int &modifiedindex)
 {
-    int Byte=intuniform(0, paylaodToSend.length()-1);
-    modifiedindex=(1<<intuniform(0,7));
-    paylaodToSend[Byte] ^= modifiedindex;
+    int byteIndex=intuniform(0, paylaodToSend.length()-1);
+    int bitPosition = intuniform(0, 7);
+    modifiedindex = byteIndex * 8 + bitPosition;
+    paylaodToSend[byteIndex] ^= (1 << bitPosition);
 }
 
 void Sender::finishSession()
@@ -269,9 +282,10 @@ void Sender::finishSession()
 
     outputFile<<"total transmission time = "<<TotalTransmition.str()<<endl;
     outputFile<<"total number of transmission = "<<std::to_string(totalpacketssent)<<endl;
-    outputFile<<"the network throughput = "<<endl;
+    outputFile<<"the network throughput = "<<correctMessages/TotalTransmition<<endl;
 
     outputFile.close();
+    finish();
 }
 
 std::string Sender::BoolToString(bool b)
