@@ -5,10 +5,10 @@ packet MyMessage {
     int M_Type;
     float sending_time;
     int id;
-    bool Error_Type; //0 for modified 1 for dup
+//    bool Error_Type; //0 for modified 1 for dup
     
-	bool modification;    
-    bool duplication;       
-    bool delay;             
-    bool loss;              
+//	bool modification;    
+//    bool duplication;       
+//    bool delay;             
+//    bool loss;              
 }

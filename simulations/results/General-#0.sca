@@ -1,8 +1,8 @@
 version 3
-run General-0-20250506-20:54:06-19376
+run General-0-20250506-23:45:30-20964
 attr configname General
-attr datetime 20250506-20:54:06
-attr datetimef 20250506-205406
+attr datetime 20250506-23:45:30
+attr datetimef 20250506-234530
 attr experiment General
 attr inifile omnetpp.ini
 attr iterationvars ""
@@ -10,42 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network project.simulations.Network
-attr processid 19376
-attr repetition 0
-attr replication #0
-attr resultdir results
-attr runnumber 0
-attr seedset 0
-config network project.simulations.Network
-config *.sender.st 5
-config *.sender.to 15
-config *.sender.td 20
-config *.sender.tt 5
-config *.sender.pt 0.1
-
-par Network.sender.port$o.channel typename "\"ned.IdealChannel\""
-par Network.receiver.port$o.channel typename "\"ned.IdealChannel\""
-par Network.sender typename "\"project.Sender\""
-par Network.sender st 5
-par Network.sender to 15
-par Network.sender td 20
-par Network.sender tt 5
-par Network.sender pt 0.1
-par Network.receiver typename "\"project.Receiver\""
-par Network typename "\"project.simulations.Network\""
-
-run General-0-20250506-20:47:10-23200
-attr configname General
-attr datetime 20250506-20:47:10
-attr datetimef 20250506-204710
-attr experiment General
-attr inifile omnetpp.ini
-attr iterationvars ""
-attr iterationvarsd ""
-attr iterationvarsf ""
-attr measurement ""
-attr network project.simulations.Network
-attr processid 23200
+attr processid 20964
 attr repetition 0
 attr replication #0
 attr resultdir results

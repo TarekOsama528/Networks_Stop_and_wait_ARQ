@@ -4,3 +4,5 @@
 0010 Try hard
 1100 yolo
 1110 Test Case
+1111 Try Even Harder
+1010 Try Harder

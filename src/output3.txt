@@ -1,0 +1,304 @@
+At time=5 The Session Started at time: 5s
+At time = 5 Sender Preparing message Hello$ World, id = 0
+At time =5.1 Sender Sends message [$Hello/$ World$] ID= 0,modified= 0, duplicated=0, delayed=0 , lost=0
+At time=10.1 Receiver Received message [Hello$ World], ID=0, modified=0
+At time=10.1 Receiver Sent ACK [Hello$ World], ID=0, modified=0
+At time = 15.1 Sender received ACK for message ID = 0
+At time = 15.1 Sender Preparing message Lorem ipsum, id = 1
+At time =15.2 Sender Sends message [$Lorem ipsum$] ID= 1,modified= 0, duplicated=0, delayed=0 , lost=1
+At time= 30.2Sender Timed out, Message ID = 1
+At time =30.2 Sender Prepares message [$Lorem ipsum$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =30.3 Sender Sends message [$Lorem ipsum$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=35.3 Receiver Received message [Lorem ipsum], ID=1, modified=0
+At time=35.3 Receiver Sent ACK [Lorem ipsum], ID=1, modified=0
+At time = 40.3 Sender received ACK for message ID = 1
+At time = 40.3 Sender Preparing message Dolor Sit, id = 0
+At time =40.4 Sender Sends message [$Dolos Sit$] ID= 0,modified= 40, duplicated=0, delayed=0 , lost=0
+At time=45.4 Receiver Received message [Dolos Sit], ID=0, modified=1
+At time=45.4 Receiver Sent NACK [Dolos Sit], ID=0, modified=0
+At time= 50.4Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =50.4 Sender Prepares message [$Dolor Sit$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =50.5 Sender Sends message [$Dolor Sit$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=55.5 Receiver Received message [Dolor Sit], ID=0, modified=0
+At time=55.5 Receiver Sent ACK [Dolor Sit], ID=0, modified=0
+At time = 60.5 Sender received ACK for message ID = 0
+At time = 60.5 Sender Preparing message Try hard, id = 1
+At time =60.6 Sender Sends message [$Try hard$] ID= 1,modified= 0, duplicated=0, delayed=1 , lost=0
+At time= 75.6Sender Timed out, Message ID = 1
+At time =75.6 Sender Prepares message [$Try hard$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =75.7 Sender Sends message [$Try hard$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=80.6 Receiver Received message [Try hard], ID=1, modified=0
+At time=80.6 Receiver Sent ACK [Try hard], ID=1, modified=0
+At time=80.7 Receiver Received message [Try hard], ID=1, modified=1
+At time=80.7 Receiver Sent NACK [Try hard], ID=0, modified=0
+At time = 85.6 Sender received ACK for message ID = 1
+At time = 85.6 Sender Preparing message yolo, id = 0
+At time =85.7 Sender Sends message [$yodo$] ID= 0,modified= 27, duplicated=1, delayed=0 , lost=0
+At time =85.8 Sender Sends message [$yodo$] ID= 0,modified= 27, duplicated=2, delayed=0 , lost=0
+At time= 85.7Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =85.7 Sender Prepares message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =85.8 Sender Sends message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=90.7 Receiver Received message [yodo], ID=0, modified=1
+At time=90.7 Receiver Sent NACK [yodo], ID=0, modified=0
+At time=90.8 Receiver Received message [yolo], ID=0, modified=0
+At time=90.8 Receiver Sent ACK [yolo], ID=0, modified=0
+At time=90.8 Receiver Received message [yolo], ID=0, modified=1
+At time=90.8 Receiver Sent NACK [yolo], ID=1, modified=0
+At time= 95.7Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =95.7 Sender Prepares message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =95.8 Sender Sends message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time = 95.8 Sender received ACK for message ID = 0
+At time = 95.8 Sender Preparing message Test Case, id = 1
+At time =95.9 Sender Sends message [$Teï¿½t Case$] ID= 1,modified= 31, duplicated=1, delayed=1 , lost=0
+At time =96 Sender Sends message [$Teï¿½t Case$] ID= 1,modified= 31, duplicated=2, delayed=1 , lost=0
+At time= 95.8Sender Received NACK for current ID = 1, Resending correct Message ID = 1
+At time =95.8 Sender Prepares message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =95.9 Sender Sends message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=100.8 Receiver Received message [yolo], ID=0, modified=1
+At time=100.8 Receiver Sent NACK [yolo], ID=1, modified=0
+At time=100.9 Receiver Received message [Test Case], ID=1, modified=0
+At time=100.9 Receiver Sent ACK [Test Case], ID=1, modified=0
+At time= 105.8Sender Received NACK for current ID = 1, Resending correct Message ID = 1
+At time =105.8 Sender Prepares message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =105.9 Sender Sends message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time = 105.9 Sender received ACK for message ID = 1
+total transmission time = 100.9
+total number of transmission = 25
+the network throughput = 0.0792864
+At time=5 The Session Started at time: 5s
+At time = 5 Sender Preparing message Hello$ World, id = 0
+At time =5.1 Sender Sends message [$Hello/$ World$] ID= 0,modified= 0, duplicated=0, delayed=0 , lost=0
+At time=10.1 Receiver Received message [Hello$ World], ID=0, modified=0
+At time=10.1 Receiver Sent ACK [Hello$ World], ID=0, modified=0
+At time = 15.1 Sender received ACK for message ID = 0
+At time = 15.1 Sender Preparing message Lorem ipsum, id = 1
+At time =15.2 Sender Sends message [$Lorem ipsum$] ID= 1,modified= 0, duplicated=0, delayed=0 , lost=1
+At time= 30.2Sender Timed out, Message ID = 1
+At time =30.2 Sender Prepares message [$Lorem ipsum$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =30.3 Sender Sends message [$Lorem ipsum$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=35.3 Receiver Received message [Lorem ipsum], ID=1, modified=0
+At time=35.3 Receiver Sent ACK [Lorem ipsum], ID=1, modified=0
+At time = 40.3 Sender received ACK for message ID = 1
+At time = 40.3 Sender Preparing message Dolor Sit, id = 0
+At time =40.4 Sender Sends message [$Dolos Sit$] ID= 0,modified= 40, duplicated=0, delayed=0 , lost=0
+At time=45.4 Receiver Received message [Dolos Sit], ID=0, modified=1
+At time=45.4 Receiver Sent NACK [Dolos Sit], ID=0, modified=0
+At time= 50.4Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =50.4 Sender Prepares message [$Dolor Sit$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =50.5 Sender Sends message [$Dolor Sit$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=55.5 Receiver Received message [Dolor Sit], ID=0, modified=0
+At time=55.5 Receiver Sent ACK [Dolor Sit], ID=0, modified=0
+At time = 60.5 Sender received ACK for message ID = 0
+At time = 60.5 Sender Preparing message Try hard, id = 1
+At time =60.6 Sender Sends message [$Try hard$] ID= 1,modified= 0, duplicated=0, delayed=1 , lost=0
+At time= 75.6Sender Timed out, Message ID = 1
+At time =75.6 Sender Prepares message [$Try hard$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =75.7 Sender Sends message [$Try hard$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=80.6 Receiver Received message [Try hard], ID=1, modified=0
+At time=80.6 Receiver Sent ACK [Try hard], ID=1, modified=0
+At time=80.7 Receiver Received message [Try hard], ID=1, modified=1
+At time=80.7 Receiver Sent NACK [Try hard], ID=0, modified=0
+At time = 85.6 Sender received ACK for message ID = 1
+At time = 85.6 Sender Preparing message yolo, id = 0
+At time =85.7 Sender Sends message [$yodo$] ID= 0,modified= 27, duplicated=1, delayed=0 , lost=0
+At time =85.8 Sender Sends message [$yodo$] ID= 0,modified= 27, duplicated=2, delayed=0 , lost=0
+At time= 85.7Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =85.7 Sender Prepares message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =85.8 Sender Sends message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=90.7 Receiver Received message [yodo], ID=0, modified=1
+At time=90.7 Receiver Sent NACK [yodo], ID=0, modified=0
+At time=90.8 Receiver Received message [yolo], ID=0, modified=0
+At time=90.8 Receiver Sent ACK [yolo], ID=0, modified=0
+At time=90.8 Receiver Received message [yolo], ID=0, modified=1
+At time=90.8 Receiver Sent NACK [yolo], ID=1, modified=0
+At time= 95.7Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =95.7 Sender Prepares message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =95.8 Sender Sends message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time = 95.8 Sender received ACK for message ID = 0
+At time = 95.8 Sender Preparing message Test Case, id = 1
+At time =95.9 Sender Sends message [$Teï¿½t Case$] ID= 1,modified= 31, duplicated=1, delayed=1 , lost=0
+At time =96 Sender Sends message [$Teï¿½t Case$] ID= 1,modified= 31, duplicated=2, delayed=1 , lost=0
+At time= 95.8Sender Received NACK for current ID = 1, Resending correct Message ID = 1
+At time =95.8 Sender Prepares message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =95.9 Sender Sends message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=100.8 Receiver Sent NACK [yolo], ID=1, modified=0
+At time=100.9 Receiver Received message [Test Case], ID=1, modified=0
+At time=100.9 Receiver Sent ACK [Test Case], ID=1, modified=0
+At time= 105.8Sender Received NACK for current ID = 1, Resending correct Message ID = 1
+At time =105.8 Sender Prepares message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =105.9 Sender Sends message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time = 105.9 Sender received ACK for message ID = 1
+total transmission time = 100.9
+total number of transmission = 25
+the network throughput = 0.0792864
+At time=5 The Session Started at time: 5s
+At time = 5 Sender Preparing message Hello$ World, id = 0
+At time =5.1 Sender Sends message [$Hello/$ World$] ID= 0,modified= 0, duplicated=0, delayed=0 , lost=0
+At time=10.1 Receiver Received message [Hello$ World], ID=0, modified=0
+At time=10.1 Receiver Sent ACK [Hello$ World], ID=0, modified=0
+At time = 15.1 Sender received ACK for message ID = 0
+At time = 15.1 Sender Preparing message Lorem ipsum, id = 1
+At time =15.2 Sender Sends message [$Lorem ipsum$] ID= 1,modified= 0, duplicated=0, delayed=0 , lost=1
+At time= 30.2Sender Timed out, Message ID = 1
+At time =30.2 Sender Prepares message [$Lorem ipsum$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =30.3 Sender Sends message [$Lorem ipsum$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=35.3 Receiver Received message [Lorem ipsum], ID=1, modified=0
+At time=35.3 Receiver Sent ACK [Lorem ipsum], ID=1, modified=0
+At time = 40.3 Sender received ACK for message ID = 1
+At time = 40.3 Sender Preparing message Dolor Sit, id = 0
+At time =40.4 Sender Sends message [$Dolos Sit$] ID= 0,modified= 40, duplicated=0, delayed=0 , lost=0
+At time=45.4 Receiver Received message [Dolos Sit], ID=0, modified=1
+At time=45.4 Receiver Sent NACK [Dolos Sit], ID=0, modified=0
+At time= 50.4Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =50.4 Sender Prepares message [$Dolor Sit$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =50.5 Sender Sends message [$Dolor Sit$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=55.5 Receiver Received message [Dolor Sit], ID=0, modified=0
+At time=55.5 Receiver Sent ACK [Dolor Sit], ID=0, modified=0
+At time = 60.5 Sender received ACK for message ID = 0
+At time = 60.5 Sender Preparing message Try hard, id = 1
+At time =60.6 Sender Sends message [$Try hard$] ID= 1,modified= 0, duplicated=0, delayed=1 , lost=0
+At time= 75.6Sender Timed out, Message ID = 1
+At time =75.6 Sender Prepares message [$Try hard$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =75.7 Sender Sends message [$Try hard$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=80.6 Receiver Received message [Try hard], ID=1, modified=0
+At time=80.6 Receiver Sent ACK [Try hard], ID=1, modified=0
+At time=80.7 Receiver Received message [Try hard], ID=1, modified=1
+At time=80.7 Receiver Sent NACK [Try hard], ID=0, modified=0
+At time = 85.6 Sender received ACK for message ID = 1
+At time = 85.6 Sender Preparing message yolo, id = 0
+At time =85.7 Sender Sends message [$yodo$] ID= 0,modified= 27, duplicated=1, delayed=0 , lost=0
+At time =85.8 Sender Sends message [$yodo$] ID= 0,modified= 27, duplicated=2, delayed=0 , lost=0
+At time= 85.7Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =85.7 Sender Prepares message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =85.8 Sender Sends message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=90.7 Receiver Received message [yodo], ID=0, modified=1
+At time=90.7 Receiver Sent NACK [yodo], ID=0, modified=0
+At time=90.8 Receiver Received message [yolo], ID=0, modified=0
+At time=90.8 Receiver Sent ACK [yolo], ID=0, modified=0
+At time=90.8 Receiver Received message [yolo], ID=0, modified=1
+At time=90.8 Receiver Sent NACK [yolo], ID=1, modified=0
+At time= 95.7Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =95.7 Sender Prepares message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =95.8 Sender Sends message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time = 95.8 Sender received ACK for message ID = 0
+At time = 95.8 Sender Preparing message Test Case, id = 1
+At time =95.9 Sender Sends message [$Teót Case$] ID= 1,modified= 31, duplicated=1, delayed=1 , lost=0
+At time =96 Sender Sends message [$Teót Case$] ID= 1,modified= 31, duplicated=2, delayed=1 , lost=0
+At time= 95.8Sender Received NACK for current ID = 1, Resending correct Message ID = 1
+At time =95.8 Sender Prepares message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =95.9 Sender Sends message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=100.8 Receiver Received message [yolo], ID=0, modified=1
+At time=100.8 Receiver Sent NACK [yolo], ID=1, modified=0
+At time=100.9 Receiver Received message [Test Case], ID=1, modified=0
+At time=100.9 Receiver Sent ACK [Test Case], ID=1, modified=0
+At time= 105.8Sender Received NACK for current ID = 1, Resending correct Message ID = 1
+At time =105.8 Sender Prepares message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =105.9 Sender Sends message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time = 105.9 Sender received ACK for message ID = 1
+total transmission time = 100.9
+total number of transmission = 25
+the network throughput = 0.0594648
+At time=5 The Session Started at time: 5s
+At time = 5 Sender Preparing message Hello$ World, id = 0
+At time =5.1 Sender Sends message [$Hello/$ World$] ID= 0,modified= 0, duplicated=0, delayed=0 , lost=0
+At time=10.1 Receiver Received message [Hello$ World], ID=0, modified=0
+At time=10.1 Receiver Sent ACK [Hello$ World], ID=0, modified=0
+At time = 15.1 Sender received ACK for message ID = 0
+At time = 15.1 Sender Preparing message Lorem ipsum, id = 1
+At time =15.2 Sender Sends message [$Lorem ipsum$] ID= 1,modified= 0, duplicated=0, delayed=0 , lost=1
+At time= 30.2Sender Timed out, Message ID = 1
+At time =30.2 Sender Prepares message [$Lorem ipsum$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =30.3 Sender Sends message [$Lorem ipsum$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=35.3 Receiver Received message [Lorem ipsum], ID=1, modified=0
+At time=35.3 Receiver Sent ACK [Lorem ipsum], ID=1, modified=0
+At time = 40.3 Sender received ACK for message ID = 1
+At time = 40.3 Sender Preparing message Dolor Sit, id = 0
+At time =40.4 Sender Sends message [$Dolos Sit$] ID= 0,modified= 40, duplicated=0, delayed=0 , lost=0
+At time=45.4 Receiver Received message [Dolos Sit], ID=0, modified=1
+At time=45.4 Receiver Sent NACK [Dolos Sit], ID=0, modified=0
+At time= 50.4Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =50.4 Sender Prepares message [$Dolor Sit$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =50.5 Sender Sends message [$Dolor Sit$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=55.5 Receiver Received message [Dolor Sit], ID=0, modified=0
+At time=55.5 Receiver Sent ACK [Dolor Sit], ID=0, modified=0
+At time = 60.5 Sender received ACK for message ID = 0
+At time = 60.5 Sender Preparing message Try hard, id = 1
+At time =60.6 Sender Sends message [$Try hard$] ID= 1,modified= 0, duplicated=0, delayed=1 , lost=0
+At time= 75.6Sender Timed out, Message ID = 1
+At time =75.6 Sender Prepares message [$Try hard$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =75.7 Sender Sends message [$Try hard$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=80.6 Receiver Received message [Try hard], ID=1, modified=0
+At time=80.6 Receiver Sent ACK [Try hard], ID=1, modified=0
+At time=80.7 Receiver Received message [Try hard], ID=1, modified=1
+At time=80.7 Receiver Sent NACK [Try hard], ID=0, modified=0
+At time = 85.6 Sender received ACK for message ID = 1
+At time = 85.6 Sender Preparing message yolo, id = 0
+At time =85.7 Sender Sends message [$yodo$] ID= 0,modified= 27, duplicated=1, delayed=0 , lost=0
+At time =85.8 Sender Sends message [$yodo$] ID= 0,modified= 27, duplicated=2, delayed=0 , lost=0
+At time= 85.7Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =85.7 Sender Prepares message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =85.8 Sender Sends message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=90.7 Receiver Received message [yodo], ID=0, modified=1
+At time=90.7 Receiver Sent NACK [yodo], ID=0, modified=0
+At time=90.8 Receiver Received message [yolo], ID=0, modified=0
+At time=90.8 Receiver Sent ACK [yolo], ID=0, modified=0
+At time=90.8 Receiver Received message [yolo], ID=0, modified=1
+At time=90.8 Receiver Sent NACK [yolo], ID=1, modified=0
+At time= 95.7Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =95.7 Sender Prepares message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =95.8 Sender Sends message [$yolo$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time = 95.8 Sender received ACK for message ID = 0
+At time = 95.8 Sender Preparing message Test Case, id = 1
+At time =95.9 Sender Sends message [$Teót Case$] ID= 1,modified= 31, duplicated=1, delayed=1 , lost=0
+At time =96 Sender Sends message [$Teót Case$] ID= 1,modified= 31, duplicated=2, delayed=1 , lost=0
+At time= 95.8Sender Received NACK for current ID = 1, Resending correct Message ID = 1
+At time =95.8 Sender Prepares message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =95.9 Sender Sends message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=100.8 Receiver Received message [yolo], ID=0, modified=1
+At time=100.8 Receiver Sent NACK [yolo], ID=1, modified=0
+At time=100.9 Receiver Received message [Test Case], ID=1, modified=0
+At time=100.9 Receiver Sent ACK [Test Case], ID=1, modified=0
+At time= 105.8Sender Received NACK for current ID = 1, Resending correct Message ID = 1
+At time =105.8 Sender Prepares message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =105.9 Sender Sends message [$Test Case$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time = 105.9 Sender received ACK for message ID = 1
+At time = 105.9 Sender Preparing message Try Even Harder, id = 0
+At time =106 Sender Sends message [$Try Even(Harder$] ID= 0,modified= 75, duplicated=1, delayed=1 , lost=1
+At time=110.9 Receiver Received message [Test Case], ID=1, modified=1
+At time=110.9 Receiver Sent NACK [Test Case], ID=0, modified=0
+At time=115.9 Receiver Received message [Teót Case], ID=1, modified=1
+At time=115.9 Receiver Sent NACK [Teót Case], ID=0, modified=0
+At time= 115.9Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =115.9 Sender Prepares message [$Try Even Harder$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =116 Sender Sends message [$Try Even Harder$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=116 Receiver Received message [Test Case], ID=1, modified=1
+At time=116 Receiver Sent NACK [Test Case], ID=0, modified=0
+At time= 120.9Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =120.9 Sender Prepares message [$Try Even Harder$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =121 Sender Sends message [$Try Even Harder$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=121 Receiver Received message [Try Even Harder], ID=0, modified=0
+At time=121 Receiver Sent ACK [Try Even Harder], ID=0, modified=0
+At time= 121Sender Received NACK for current ID = 0, Resending correct Message ID = 0
+At time =121 Sender Prepares message [$Try Even Harder$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =121.1 Sender Sends message [$Try Even Harder$] ID= 0, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=126 Receiver Received message [Try Even Harder], ID=0, modified=1
+At time=126 Receiver Sent NACK [Try Even Harder], ID=1, modified=0
+At time = 126 Sender received ACK for message ID = 0
+At time = 126 Sender Preparing message Try Harder, id = 1
+At time =126.1 Sender Sends message [$Try Larder$] ID= 1,modified= 42, duplicated=0, delayed=1 , lost=0
+At time=126.1 Receiver Received message [Try Even Harder], ID=0, modified=1
+At time=126.1 Receiver Sent NACK [Try Even Harder], ID=1, modified=0
+At time= 131Sender Received NACK for current ID = 1, Resending correct Message ID = 1
+At time =131 Sender Prepares message [$Try Harder$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =131.1 Sender Sends message [$Try Harder$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time= 131.1Sender Received NACK for current ID = 1, Resending correct Message ID = 1
+At time =131.1 Sender Prepares message [$Try Harder$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time =131.2 Sender Sends message [$Try Harder$] ID= 1, modified= 0, duplicated= 0, delayed= 0, lost= 0
+At time=136.1 Receiver Received message [Try Harder], ID=1, modified=0
+At time=136.1 Receiver Sent ACK [Try Harder], ID=1, modified=0
+At time=136.2 Receiver Received message [Try Harder], ID=1, modified=1
+At time=136.2 Receiver Sent NACK [Try Harder], ID=0, modified=0
+At time = 141.1 Sender received ACK for message ID = 1
+total transmission time = 136.1
+total number of transmission = 38
+the network throughput = 0.0587803

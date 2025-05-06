@@ -29,7 +29,7 @@ void Sender::initialize()
 
     loadMessageFromFile("../src/input0.txt");
 
-    outputFile.open("../src/output0.txt", std::ios::app);
+    outputFile.open("../src/output3.txt", std::ios::app);
     if(outputFile.is_open())
     {
         EV<<"Opened output file!!!"<<endl;
@@ -53,11 +53,37 @@ void Sender::handleMessage(cMessage *msg)
         }
         else if (msg == timeoutEvent)
         {
-            EV <<"At time= "<<simTime()<<"Sender Timed out, Resending Message ID = " << currentMessage->getId() << endl;
-            outputFile <<"At time= "<<simTime()<<"Sender Timed out, Resending Message ID = " << currentMessage->getId() << endl;
+            std::string errorcode=errorMessages[CurrentMessageIndex-1];
+            bool modification = (errorcode[0] == '1');
+            bool duplication = (errorcode[1] == '1');
+            bool delay = (errorcode[2] == '1');
+            bool loss = (errorcode[3] == '1');
+
+
+
+            EV <<"At time= "<<simTime()<<"Sender Timed out, Message ID = " << currentMessage->getId() << endl;
+            outputFile <<"At time= "<<simTime()<<"Sender Timed out, Message ID = " << currentMessage->getId() << endl;
+
+            EV << "At time =" << simTime()<< " Sender Prepares message [" << currentMessage->getM_Payload()
+                                               << "] ID= " << currentMessage->getId() << ", modified= 0, duplicated= 0, delayed= 0, lost= 0" << endl;
+
+            outputFile << "At time =" << simTime() << " Sender Prepares message [" << currentMessage->getM_Payload()
+                                               << "] ID= " << currentMessage->getId() << ", modified= 0, duplicated= 0, delayed= 0, lost= 0" << endl;
+
+
+
+
+
             MyMessage *retransmit = currentMessage->dup();
             retransmit->setM_Payload(unmodifiedpayload.c_str());
-            correctMessages++;
+
+            EV << "At time =" << simTime() + pt << " Sender Sends message [" << currentMessage->getM_Payload()
+                                                           << "] ID= " << currentMessage->getId() << ", modified= 0, duplicated= 0, delayed= 0, lost= 0" << endl;
+
+            outputFile << "At time =" << simTime() + pt << " Sender Sends message [" << currentMessage->getM_Payload()
+                                                           << "] ID= " << currentMessage->getId() << ", modified= 0, duplicated= 0, delayed= 0, lost= 0" << endl;
+
+//            correctMessages++;
             sendDelayed(retransmit, tt+pt, "port$o");
             totalpacketssent++;
             scheduleAt(simTime() + to+pt, timeoutEvent);
@@ -96,37 +122,36 @@ void Sender::handleMessage(cMessage *msg)
             }
             else if (ack->getM_Type() == 2)  // NACK
             {
-                if (ack->getError_Type() == 0)
-                {
+                // Always resend the correct frame
+                EV << "At time= " << simTime() << "Sender Received NACK for current ID = " << ack->getId()
+                   << ", Resending correct Message ID = " << currentMessage->getId() << endl;
+
+                outputFile << "At time= " << simTime() << "Sender Received NACK for current ID = " << ack->getId()
+                           << ", Resending correct Message ID = " << currentMessage->getId() << endl;
 
 
-                    EV <<"At time= "<<simTime()<<" Received NACK for current ID = " << ack->getId()
-                       << ", Starts Preparing Message["<<unmodifiedpayload<<"] ID = " << currentMessage->getId() << endl;
 
-                    outputFile <<"At time= "<<simTime()<<" Received NACK for current ID = " << ack->getId()
-                                           << ", Starts Preparing Message["<<unmodifiedpayload<<"] ID = " << currentMessage->getId() << endl;
+                currentMessage->setM_Payload(unmodifiedpayload.c_str());
+                MyMessage *retransmit = currentMessage->dup();
+                retransmit->setM_Payload(unmodifiedpayload.c_str());
+                cancelEvent(timeoutEvent);
 
-                    correctMessages++;
-                    MyMessage *retransmit = currentMessage->dup();
-                    retransmit->setM_Payload(unmodifiedpayload.c_str());
-                    cancelEvent(timeoutEvent);
-                    EV<<"At time ="<<simTime()+pt<<" Sender Sends message ["<<currentMessage->getM_Payload()<<"] ID= "<<currentMessage->getId()<<",modified= "<<0<<", duplicated="<<0<<", delayed="<<0<<" , lost="<<0<<endl;
+                EV << "At time =" << simTime() << " Sender Prepares message [" << currentMessage->getM_Payload()
+                                   << "] ID= " << currentMessage->getId() << ", modified= 0, duplicated= 0, delayed= 0, lost= 0" << endl;
 
-                    outputFile<<"At time ="<<simTime()+pt<<" Sender Sends message ["<<currentMessage->getM_Payload()<<"] ID= "<<currentMessage->getId()<<",modified= "<<0<<", duplicated="<<0<<", delayed="<<0<<" , lost="<<0<<endl;
+                                outputFile << "At time =" << simTime() << " Sender Prepares message [" << currentMessage->getM_Payload()
+                                           << "] ID= " << currentMessage->getId() << ", modified= 0, duplicated= 0, delayed= 0, lost= 0" << endl;
 
-                    sendDelayed(retransmit, tt+pt, "port$o");
-                    totalpacketssent+=2;
-                    scheduleAt(simTime() + to+pt, timeoutEvent);
-                }
-                else if (ack->getError_Type()==1)
-                {
-                    totalpacketssent++;
-                    EV <<"At time= "<<simTime()<< " Received NACK for already ACKed ID = " << ack->getId()
-                       << " (likely a duplicate frame at receiver), ignoring.\n";
-                    outputFile<<"At time= "<<simTime() << " Received NACK for already ACKed ID = " << ack->getId()
-                                           << " (likely a duplicate frame at receiver), ignoring.\n";
 
-                }
+                EV << "At time =" << simTime() + pt << " Sender Sends message [" << currentMessage->getM_Payload()
+                   << "] ID= " << currentMessage->getId() << ", modified= 0, duplicated= 0, delayed= 0, lost= 0" << endl;
+
+                outputFile << "At time =" << simTime() + pt << " Sender Sends message [" << currentMessage->getM_Payload()
+                           << "] ID= " << currentMessage->getId() << ", modified= 0, duplicated= 0, delayed= 0, lost= 0" << endl;
+
+                sendDelayed(retransmit, tt + pt, "port$o");
+                totalpacketssent+=2;
+                scheduleAt(simTime() + to + pt, timeoutEvent);
             }
 
             delete msg;
@@ -202,10 +227,10 @@ void Sender::SimulateErrors(MyMessage *msg,std::string errorcode)
     bool loss = (errorcode[3] == '1');
 
     //no errors
-    double delaytime=0;
+    double delaytime=tt;
     if(delay)
     {
-        delaytime=td;
+        delaytime+=(td-tt);
     }
 
     int modifiedbitpos=0;
@@ -217,21 +242,23 @@ void Sender::SimulateErrors(MyMessage *msg,std::string errorcode)
     }
     if(!loss)
     {
-        sendDelayed(msg->dup(), tt+pt+delaytime, "port$o");
+        sendDelayed(msg->dup(), pt+delaytime, "port$o");
         totalpacketssent++;
-        if(!modification)
-        {
-            correctMessages++;
-        }
+//        if(!modification)
+//        {
+//            correctMessages++;
+//        }
     }
     currentMessage=msg;
     EV<<"At time ="<<simTime()+pt<<" Sender Sends message ["<<msg->getM_Payload()<<"] ID= "<<msg->getId()<<",modified= "<<modifiedbitpos<<", duplicated="<<BoolToString(duplication)<<", delayed="<<BoolToString(delay)<<" , lost="<<BoolToString(loss)<<endl;
 
     outputFile<<"At time ="<<simTime()+pt<<" Sender Sends message ["<<msg->getM_Payload()<<"] ID= "<<msg->getId()<<",modified= "<<modifiedbitpos<<", duplicated="<<BoolToString(duplication)<<", delayed="<<BoolToString(delay)<<" , lost="<<BoolToString(loss)<<endl;
 
+    currentMessage->setSending_time(delaytime);
+
     if(duplication && !loss)
     {
-        sendDelayed(msg, tt+pt+delaytime+0.1, "port$o");
+        sendDelayed(msg, pt+delaytime+0.1, "port$o");
         totalpacketssent++;
 
         outputFile<<"At time ="<<simTime()+pt+0.1<<" Sender Sends message ["<<msg->getM_Payload()<<"] ID= "<<msg->getId()<<",modified= "<<modifiedbitpos<<", duplicated=2"<<", delayed="<<BoolToString(delay)<<" , lost="<<BoolToString(loss)<<endl;
@@ -285,7 +312,7 @@ void Sender::finishSession()
     outputFile<<"the network throughput = "<<correctMessages/TotalTransmition<<endl;
 
     outputFile.close();
-    finish();
+    endSimulation();
 }
 
 std::string Sender::BoolToString(bool b)

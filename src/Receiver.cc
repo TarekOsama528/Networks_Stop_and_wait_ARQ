@@ -51,14 +51,14 @@ void Receiver::handleMessage(cMessage *msg1)
         MyMessage *nack = new MyMessage();
         nack->setM_Type(2);
         nack->setId(id);
-        if(haseBitError)
-        {
-            nack->setError_Type(0);
-        }
-        else
-        {
-            nack->setError_Type(1);
-        }
+//        if(haseBitError)
+//        {
+//            nack->setError_Type(0);
+//        }
+//        else
+//        {
+//            nack->setError_Type(1);
+//        }
 
         //send(nack,"port$o");
         sendDelayed(nack, 5, "port$o");
@@ -137,7 +137,7 @@ void Receiver::logAction(const std::string& direction, const std::string& msgTyp
        << ", modified=" << modified << "\n";
 
     // Append to external text file
-    std::ofstream outFile("../src/output0.txt", std::ios::app); // append mode
+    std::ofstream outFile("../src/output3.txt", std::ios::app); // append mode
     if (outFile.is_open()) {
         outFile << "At time=" << simTime()
                 << " Receiver " << direction
